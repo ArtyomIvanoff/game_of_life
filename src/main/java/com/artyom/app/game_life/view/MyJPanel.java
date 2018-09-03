@@ -46,8 +46,9 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
     private int[] scales;
     private Timer timer;
     private int fps = 10;
-    private int num_alived = 600;
-    private CellSetFactory.Mode cellSet_mode = CellSetFactory.Mode.RANDOMED;
+    private int num_alived = 0;
+	private int percent_alived = 25;
+    private CellSetFactory.Mode cellSet_mode = CellSetFactory.Mode.INVERT_CELL;
     private boolean isPaused = true;
 
     public CellSetFactory getCellSetFactory() {
@@ -176,7 +177,7 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
 
         cellSetFactory = new CellSetFactory(rows, columns);
 
-        cellSet = cellSetFactory.newInstance(num_alived);
+        cellSet = cellSetFactory.newInstance(percent_alived);
 
         //cellSet = cellSetFactory.newGlider(10, 10);
         cellController = new CellController(cellSet);
@@ -191,19 +192,21 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
         Graphics2D g2 = (Graphics2D) g;
         g2.setBackground(Color.white);
-
+		
+		num_alived = 0;
         g2.setColor(Color.red);
         boolean[][] cells = cellSet.getCells();
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {
                 // x coordinate is column, y coordinate is row
-                if (cells[i][j]) {
+                if (cells[i][j]) { // true means alived cell
                     g2.fillRect(scales[j], scales[i], sizeCell, sizeCell);
+					num_alived++;
                 }
             }
         }
-        
-        if(!isPaused)
+		
+		if(!isPaused)
             cellSet = cellController.getNextGeneration();
     }
 
@@ -212,6 +215,7 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+		// update the cell set according to the timer (every 1000/fps ms)
         repaint();
     }
 }

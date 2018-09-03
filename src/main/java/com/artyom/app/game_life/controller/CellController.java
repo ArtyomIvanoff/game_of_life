@@ -22,6 +22,10 @@ public class CellController {
     private Set<PairIndices> candidates;
     private final int minAlive = 2;
     private final int maxAlive = 3;
+	private int generation = 0;
+	
+	public int getGeneration() { return generation; }
+	public void setGeneration(int gen) { this.generation = gen; }
 
     public CellController(CellSet cellSet) {
         this.setCellSet(cellSet);
@@ -52,7 +56,9 @@ public class CellController {
             // and set of 8 neighbours
             candidates.addAll(pair.getValue());
         });
-
+		// increase the number of generation
+		generation += 1;
+		
         return cellSet;
     }
 

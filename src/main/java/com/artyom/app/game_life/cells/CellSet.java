@@ -15,7 +15,7 @@ import java.util.Set;
 public class CellSet {
     // the set of cells, every of them can be dead (false) or alive (true)
     private boolean[][] cells;
-
+	
     public boolean[][] getCells() {
         return cells;
     }
@@ -23,7 +23,7 @@ public class CellSet {
     public void setCells(boolean[][] cells) {
         this.cells = cells;
     }
-
+	
     public CellSet(int rows) {
         cells = new boolean[rows][rows];
     }

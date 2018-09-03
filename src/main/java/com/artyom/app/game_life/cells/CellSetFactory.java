@@ -39,9 +39,13 @@ public class CellSetFactory {
         random.setSeed(System.currentTimeMillis());
     }
     
-    public CellSet newInstance(int numAlived) {
+    public CellSet newInstance(int percent_Alived) {
         boolean[][] cellField = new boolean[rows][columns];
         CellSet cellSet = new CellSet(cellField);
+		
+		// how many % cells will be alived in the 1st generation
+		int numAlived = rows*columns*percent_Alived / 100;
+		
         for(int i = 0; i < numAlived; i++) {
             int x = random.nextInt(rows);
             int y = random.nextInt(columns);
