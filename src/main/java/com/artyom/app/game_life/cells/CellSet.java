@@ -15,6 +15,8 @@ import java.util.Set;
 public class CellSet {
     // the set of cells, every of them can be dead (false) or alive (true)
     private boolean[][] cells;
+    private int numRows;
+    private int numColumns;
 	
     public boolean[][] getCells() {
         return cells;
@@ -22,19 +24,33 @@ public class CellSet {
 
     public void setCells(boolean[][] cells) {
         this.cells = cells;
+        numRows = cells.length;
+        numColumns = cells[0].length;
     }
 	
     public CellSet(int rows) {
         cells = new boolean[rows][rows];
+        numRows = cells.length;
+        numColumns = numRows;
     }
     
     public CellSet(boolean[][] cells) {
         this.cells = cells;
+        numRows = cells.length;
+        numColumns = cells[0].length;
+    }
+    
+    public int getRows() {
+        return numRows;
+    }
+
+    public int getColumns() {
+        return numColumns;
     }
     
     public void setCellStatus(int row, int col, boolean value) {
-        row = row % cells.length;
-        col = col % cells[0].length;
+        row = normalizeRow(row);
+        col = normalizeColumn(col);
         
         cells[row][col] = value;
     }
@@ -46,8 +62,8 @@ public class CellSet {
      * @return true if this cell is alive, false if it' dead
      */
     public boolean isAlived(int row, int col) {
-        row = row % cells.length;
-        col = col % cells[0].length;
+        row = normalizeRow(row);
+        col = normalizeColumn(col);
         
         return cells[row][col];
     }
@@ -58,8 +74,8 @@ public class CellSet {
      * @param col Column of the specified cell
      */
     public void invertCellState(int row, int col) {
-        row = row % cells.length;
-        col = col % cells[0].length;
+        row = normalizeRow(row);
+        col = normalizeColumn(col);
         
         cells[row][col] = !cells[row][col];
     }
@@ -73,10 +89,10 @@ public class CellSet {
     public Set<PairIndices> getNeighbourIndices(int row, int col) {
         Set<PairIndices> neigSet = new HashSet<>(8);
         
-        int leftCol = getLowerBound(col);
-        int rightCol = getUpperBound(col);
-        int upperRow = getLowerBound(row);
-        int downRow = getUpperBound(row);
+        int leftCol = normalizeColumn(col-1);
+        int rightCol = normalizeColumn(col+1);
+        int upperRow = normalizeRow(row-1);
+        int downRow = normalizeRow(row+1);
         
         neigSet.add(new PairIndices(upperRow, leftCol));
         neigSet.add(new PairIndices(row, leftCol));
@@ -92,30 +108,11 @@ public class CellSet {
         return neigSet;
     }
     
-    private int getLowerBound(int ind) {
-        int n = cells.length;
-        
-        if(ind == 0)
-            return n-1;
-        else
-            return ind-1;
+    private int normalizeRow(int row) {
+       return (row + numRows) % numRows; 
     }
     
-    private int getUpperBound(int ind) {
-        int n = cells.length;
-        
-        if(ind == n-1)
-            return 0;
-        else
-            return ind+1;
+    private int normalizeColumn(int column) {
+        return (column + numColumns) % numColumns;
     }
-
-    public int getRows() {
-        return cells.length;
-    }
-
-    public int getColumns() {
-        return cells[0].length;
-    }
-    
 }

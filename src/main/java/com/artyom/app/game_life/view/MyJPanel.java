@@ -28,7 +28,7 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
     public final int HEIGHT_PANEL = 400;
     private int rows;
     private int columns;
-    
+
     private CellSetFactory cellSetFactory;
     private CellSet cellSet;
     private CellController cellController;
@@ -47,7 +47,7 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
     private Timer timer;
     private int fps = 10;
     private int num_alived = 0;
-	private int percent_alived = 25;
+    private int percent_alived = 25;
     private CellSetFactory.Mode cellSet_mode = CellSetFactory.Mode.INVERT_CELL;
     private boolean isPaused = true;
 
@@ -69,10 +69,6 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
 
     public int getNum_alived() {
         return num_alived;
-    }
-
-    public void setNum_alived(int num_alived) {
-        this.num_alived = num_alived;
     }
 
     public int getSizeCell() {
@@ -98,10 +94,14 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
     public void setCellSet_mode(CellSetFactory.Mode cellSet_mode) {
         this.cellSet_mode = cellSet_mode;
     }
-    
-    public boolean isPaused() { return isPaused; }
-    
-    public void setPause(boolean isPaused) { this.isPaused = isPaused; }
+
+    public boolean isPaused() {
+        return isPaused;
+    }
+
+    public void setPause(boolean isPaused) {
+        this.isPaused = isPaused;
+    }
 
     /**
      * Creates new form MyJPanel
@@ -147,17 +147,17 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
         // TODO add your handling code here:
         int row = evt.getY() / sizeCell;
         int column = evt.getX() / sizeCell;
-        
-        switch(cellSet_mode) {
-            case ADD_GLIDER :
+
+        switch (cellSet_mode) {
+            case ADD_GLIDER:
                 cellSet = cellSetFactory.addGlider(cellSet, row, column);
                 break;
-            case INVERT_CELL :
-               cellSet.invertCellState(row, column);
-               break;
+            case INVERT_CELL:
+                cellSet.invertCellState(row, column);
+                break;
             default:
         }
-        
+
         // update cellSet for the cell controller
         cellController.setCellSet(cellSet);
     }//GEN-LAST:event_formMouseClicked
@@ -192,8 +192,8 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
         Graphics2D g2 = (Graphics2D) g;
         g2.setBackground(Color.white);
-		
-		num_alived = 0;
+
+        num_alived = 0;
         g2.setColor(Color.red);
         boolean[][] cells = cellSet.getCells();
         for (int i = 0; i < cells.length; i++) {
@@ -201,13 +201,15 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
                 // x coordinate is column, y coordinate is row
                 if (cells[i][j]) { // true means alived cell
                     g2.fillRect(scales[j], scales[i], sizeCell, sizeCell);
-					num_alived++;
+                    num_alived++;
                 }
             }
         }
-		
-		if(!isPaused)
+        
+        // compute next generation of the cells
+        if (!isPaused) {
             cellSet = cellController.getNextGeneration();
+        }
     }
 
     /*
@@ -215,7 +217,7 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-		// update the cell set according to the timer (every 1000/fps ms)
+        // update the cell set according to the timer (every 1000/fps ms)
         repaint();
     }
 }

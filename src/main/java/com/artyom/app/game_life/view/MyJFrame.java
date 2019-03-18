@@ -31,6 +31,7 @@ public class MyJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jColorChooser1 = new javax.swing.JColorChooser();
         jPanel1 = jPanel1 = new MyJPanel();
         ;
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -43,6 +44,7 @@ public class MyJFrame extends javax.swing.JFrame {
         AddCellMenuItem = new javax.swing.JMenuItem();
         AddGliderMenuItem = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuColorCell = new javax.swing.JMenu();
         HelpMenu = new javax.swing.JMenu();
         AboutMenuItem = new javax.swing.JMenuItem();
 
@@ -126,6 +128,14 @@ public class MyJFrame extends javax.swing.JFrame {
             }
         });
         EditMenu.add(jMenuItem3);
+
+        jMenuColorCell.setText("Set cell's color");
+        jMenuColorCell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuColorCellActionPerformed(evt);
+            }
+        });
+        EditMenu.add(jMenuColorCell);
 
         jMenuBar1.add(EditMenu);
 
@@ -211,6 +221,11 @@ public class MyJFrame extends javax.swing.JFrame {
         myJPanel.getCellController().setCellSet(randCellSet);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuColorCellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuColorCellActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jMenuColorCellActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,7 +272,9 @@ public class MyJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu FileMenu;
     private javax.swing.JMenu HelpMenu;
     private javax.swing.JMenuItem StartPauseMenuItem;
+    private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuColorCell;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
