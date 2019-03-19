@@ -52,6 +52,14 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
     private boolean isPaused = true;
     private Color cellColor = Color.RED;
 
+    public Color getCellColor() {
+        return cellColor;
+    }
+
+    public void setCellColor(Color cellColor) {
+        this.cellColor = cellColor;
+    }
+
     public CellSetFactory getCellSetFactory() {
         return cellSetFactory;
     }
@@ -184,7 +192,13 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
         cellController = new CellController(cellSet);
 
         // make animation 
-        timer = new Timer(1000 / fps, this);
+        if (timer == null) {
+            timer = new Timer(1000 / fps, this);
+        } else {
+            timer.stop();
+        }
+        
+        timer.setDelay(1000 / fps);
         timer.start();
     }
 
@@ -206,7 +220,7 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
                 }
             }
         }
-        
+
         // compute next generation of the cells
         if (!isPaused) {
             cellSet = cellController.getNextGeneration();
