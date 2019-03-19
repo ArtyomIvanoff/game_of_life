@@ -48,8 +48,9 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
     private int fps = 10;
     private int num_alived = 0;
     private int percent_alived = 25;
-    private CellSetFactory.Mode cellSet_mode = CellSetFactory.Mode.INVERT_CELL;
+    private CellSet.Mode cellSet_mode = CellSet.Mode.INVERT_CELL;
     private boolean isPaused = true;
+    private Color cellColor = Color.RED;
 
     public CellSetFactory getCellSetFactory() {
         return cellSetFactory;
@@ -87,11 +88,11 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
         this.fps = fps;
     }
 
-    public CellSetFactory.Mode getCellSet_mode() {
+    public CellSet.Mode getCellSet_mode() {
         return cellSet_mode;
     }
 
-    public void setCellSet_mode(CellSetFactory.Mode cellSet_mode) {
+    public void setCellSet_mode(CellSet.Mode cellSet_mode) {
         this.cellSet_mode = cellSet_mode;
     }
 
@@ -150,7 +151,7 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
 
         switch (cellSet_mode) {
             case ADD_GLIDER:
-                cellSet = cellSetFactory.addGlider(cellSet, row, column);
+                cellSet.addGlider(row, column);
                 break;
             case INVERT_CELL:
                 cellSet.invertCellState(row, column);
@@ -194,7 +195,7 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
         g2.setBackground(Color.white);
 
         num_alived = 0;
-        g2.setColor(Color.red);
+        g2.setColor(cellColor);
         boolean[][] cells = cellSet.getCells();
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {

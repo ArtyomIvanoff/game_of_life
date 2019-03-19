@@ -21,20 +21,14 @@ public class CellSet {
     public boolean[][] getCells() {
         return cells;
     }
-
-    public void setCells(boolean[][] cells) {
-        this.cells = cells;
-        numRows = cells.length;
-        numColumns = cells[0].length;
-    }
-	
+ 
     public CellSet(int rows) {
         cells = new boolean[rows][rows];
         numRows = cells.length;
         numColumns = numRows;
     }
     
-    public CellSet(boolean[][] cells) {
+    CellSet(boolean[][] cells) {
         this.cells = cells;
         numRows = cells.length;
         numColumns = cells[0].length;
@@ -106,6 +100,22 @@ public class CellSet {
         neigSet.add(new PairIndices(downRow, col));
         
         return neigSet;
+    }
+    
+    public void addGlider(int row, int column) {
+        // set the center of glider
+        setCellStatus(row, column, true);
+        // set upper wing
+        setCellStatus(row - 1, column - 1, true);
+        // set down wing
+        setCellStatus(row + 1, column, true);
+        setCellStatus(row + 1, column - 1, true);
+        // set head part
+        setCellStatus(row, column + 1, true);
+    }
+    
+    public enum Mode {
+        ADD_GLIDER, INVERT_CELL
     }
     
     private int normalizeRow(int row) {

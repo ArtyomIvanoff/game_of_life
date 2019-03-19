@@ -197,13 +197,13 @@ public class MyJFrame extends javax.swing.JFrame {
     private void AddCellMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCellMenuItemActionPerformed
         // TODO add your handling code here:
         MyJPanel myJPanel = (MyJPanel)jPanel1;
-        myJPanel.setCellSet_mode(CellSetFactory.Mode.INVERT_CELL);
+        myJPanel.setCellSet_mode(CellSet.Mode.INVERT_CELL);
     }//GEN-LAST:event_AddCellMenuItemActionPerformed
 
     private void AddGliderMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddGliderMenuItemActionPerformed
         // TODO add your handling code here:
         MyJPanel myJPanel = (MyJPanel)jPanel1;
-        myJPanel.setCellSet_mode(CellSetFactory.Mode.ADD_GLIDER);
+        myJPanel.setCellSet_mode(CellSet.Mode.ADD_GLIDER);
     }//GEN-LAST:event_AddGliderMenuItemActionPerformed
 
     private void AboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutMenuItemActionPerformed

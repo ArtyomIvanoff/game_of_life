@@ -22,20 +22,25 @@ public class CellController {
     private Set<PairIndices> candidates;
     private final int minAlive = 2;
     private final int maxAlive = 3;
-	private int generation = 0;
-	
-	public int getGeneration() { return generation; }
-	public void setGeneration(int gen) { this.generation = gen; }
+    private int generation = 0;
+
+    public int getGeneration() {
+        return generation;
+    }
+
+    public void setGeneration(int gen) {
+        this.generation = gen;
+    }
 
     public CellController(CellSet cellSet) {
         this.setCellSet(cellSet);
     }
-    
+
     public void setCellSet(CellSet cellSet) {
         this.cellSet = cellSet;
         this.candidates = CellController.getCandSetFrom(cellSet);
     }
-    
+
     /**
      * Updating the cell set and the set of candidates for the next generation
      *
@@ -45,7 +50,7 @@ public class CellController {
         // get the map when the key - cells which changed the state, the value - their neighbours
         Map<PairIndices, Set<PairIndices>> changedCells = getChangedCellsWithNeighbours();
         // the count of new candidates is it (8 neighbours + cell itself)
-        candidates = new HashSet<>(changedCells.size()*9);
+        candidates = new HashSet<>(changedCells.size() * 9);
         changedCells.entrySet().stream().forEach((pair) -> {
             PairIndices pairIndices = pair.getKey();
             int row = pairIndices.row;
@@ -56,9 +61,9 @@ public class CellController {
             // and set of 8 neighbours
             candidates.addAll(pair.getValue());
         });
-		// increase the number of generation
-		generation += 1;
-		
+        // increase the number of generation
+        generation += 1;
+
         return cellSet;
     }
 
@@ -84,10 +89,10 @@ public class CellController {
 
         return cands;
     }
-    
+
     private Map<PairIndices, Set<PairIndices>> getChangedCellsWithNeighbours() {
         Map<PairIndices, Set<PairIndices>> changedCells = new HashMap<>();
-        
+
         for (PairIndices pairInd : candidates) {
             Set<PairIndices> neighbourIndices = cellSet.getNeighbourIndices(pairInd.row, pairInd.col);
             long numAlived = neighbourIndices.stream()
@@ -97,10 +102,10 @@ public class CellController {
 
             if ((!isAlive && numAlived == maxAlive)
                     || (isAlive && (numAlived < minAlive || numAlived > maxAlive))) {
-                   changedCells.put(pairInd, neighbourIndices);
+                changedCells.put(pairInd, neighbourIndices);
             }
         }
-        
+
         return changedCells;
     }
 }
