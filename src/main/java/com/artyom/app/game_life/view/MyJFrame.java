@@ -6,7 +6,6 @@
 package com.artyom.app.game_life.view;
 
 import com.artyom.app.game_life.cells.CellSet;
-import com.artyom.app.game_life.cells.CellSetFactory;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 /**
@@ -43,6 +42,9 @@ public class MyJFrame extends javax.swing.JFrame {
         AddMenu = new javax.swing.JMenu();
         AddCellMenuItem = new javax.swing.JMenuItem();
         AddGliderMenuItem = new javax.swing.JMenuItem();
+        AddNineMenuItem = new javax.swing.JMenuItem();
+        AddEightMenuItem = new javax.swing.JMenuItem();
+        AddCornMenuItem = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuColorCell = new javax.swing.JMenu();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
@@ -121,6 +123,30 @@ public class MyJFrame extends javax.swing.JFrame {
             }
         });
         AddMenu.add(AddGliderMenuItem);
+
+        AddNineMenuItem.setText("Nine");
+        AddNineMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddNineMenuItemActionPerformed(evt);
+            }
+        });
+        AddMenu.add(AddNineMenuItem);
+
+        AddEightMenuItem.setText("Eight");
+        AddEightMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddEightMenuItemActionPerformed(evt);
+            }
+        });
+        AddMenu.add(AddEightMenuItem);
+
+        AddCornMenuItem.setText("Corn");
+        AddCornMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddCornMenuItemActionPerformed(evt);
+            }
+        });
+        AddMenu.add(AddCornMenuItem);
 
         EditMenu.add(AddMenu);
 
@@ -251,13 +277,6 @@ public class MyJFrame extends javax.swing.JFrame {
         myJPanel.setPause(true);
        
         myJPanel.configureCellSet();
-        /*
-        // create a randomed cellset by the factory
-        CellSet randCellSet = myJPanel.getCellSetFactory().newInstance(myJPanel.getNum_alived());
-        myJPanel.setCellSet(randCellSet);
-        // now there is no cells and candidates
-        myJPanel.getCellController().setCellSet(randCellSet);
-        */
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuColorCellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuColorCellActionPerformed
@@ -282,6 +301,24 @@ public class MyJFrame extends javax.swing.JFrame {
         MyJPanel myJPanel = (MyJPanel)jPanel1;
         myJPanel.setCellColor(Color.red);
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+
+    private void AddNineMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNineMenuItemActionPerformed
+        // TODO add your handling code here:
+        MyJPanel myJPanel = (MyJPanel)jPanel1;
+        myJPanel.setCellSet_mode(CellSet.Mode.ADD_NINE);
+    }//GEN-LAST:event_AddNineMenuItemActionPerformed
+
+    private void AddEightMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEightMenuItemActionPerformed
+        // TODO add your handling code here:
+        MyJPanel myJPanel = (MyJPanel)jPanel1;
+        myJPanel.setCellSet_mode(CellSet.Mode.ADD_EIGHT);
+    }//GEN-LAST:event_AddEightMenuItemActionPerformed
+
+    private void AddCornMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCornMenuItemActionPerformed
+        // TODO add your handling code here:
+        MyJPanel myJPanel = (MyJPanel)jPanel1;
+        myJPanel.setCellSet_mode(CellSet.Mode.ADD_CORN);
+    }//GEN-LAST:event_AddCornMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,8 +358,11 @@ public class MyJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AboutMenuItem;
     private javax.swing.JMenuItem AddCellMenuItem;
+    private javax.swing.JMenuItem AddCornMenuItem;
+    private javax.swing.JMenuItem AddEightMenuItem;
     private javax.swing.JMenuItem AddGliderMenuItem;
     private javax.swing.JMenu AddMenu;
+    private javax.swing.JMenuItem AddNineMenuItem;
     private javax.swing.JMenuItem ClearMenuItem;
     private javax.swing.JMenu EditMenu;
     private javax.swing.JMenuItem ExitMenuItem;

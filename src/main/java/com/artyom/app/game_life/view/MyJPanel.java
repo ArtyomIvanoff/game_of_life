@@ -164,6 +164,15 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
             case INVERT_CELL:
                 cellSet.invertCellState(row, column);
                 break;
+            case ADD_NINE:
+                cellSet.addNine(row, column);
+                break;
+            case ADD_EIGHT:
+                cellSet.addEight(row, column);
+                break;
+            case ADD_CORN:
+                cellSet.addCorn(row, column);
+                break;
             default:
         }
 
@@ -197,7 +206,7 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
         } else {
             timer.stop();
         }
-        
+
         timer.setDelay(1000 / fps);
         timer.start();
     }

@@ -114,8 +114,50 @@ public class CellSet {
         setCellStatus(row, column + 1, true);
     }
     
+    public void addNine(int row, int column) {
+        // set the center line of nine
+        setCellStatus(row, column, true);
+        setCellStatus(row, column-1, true);
+        setCellStatus(row, column+1, true);
+        
+        // set the upper arc
+        setCellStatus(row-2, column, true);
+        setCellStatus(row-2, column-1, true);
+        setCellStatus(row-2, column+1, true);
+        setCellStatus(row-1, column-1, true);
+        setCellStatus(row-1, column+1, true);
+        
+        // set the down hook
+        setCellStatus(row+2, column, true);
+        setCellStatus(row+2, column-1, true);
+        setCellStatus(row+2, column+1, true);
+        setCellStatus(row+1, column+1, true);
+    }
+    
+    public void addEight(int row, int column) {
+        // just draw 9 and activate one cell more
+        this.addNine(row, column);
+        setCellStatus(row+1, column-1, true);
+    }
+    
+    public void addCorn(int row, int column) {
+        /* corn is like: 
+           * *
+         * *   *
+           * *
+       */
+        
+        setCellStatus(row, column, true);
+        setCellStatus(row, column-1, true);
+        setCellStatus(row-1, column, true);
+        setCellStatus(row-1, column+1, true);
+        setCellStatus(row+1, column, true);
+        setCellStatus(row+1, column+1, true);
+        setCellStatus(row, column+2, true);
+    }
+    
     public enum Mode {
-        ADD_GLIDER, INVERT_CELL
+        ADD_GLIDER, INVERT_CELL, ADD_NINE, ADD_EIGHT, ADD_CORN
     }
     
     private int normalizeRow(int row) {
