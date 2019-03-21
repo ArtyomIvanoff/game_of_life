@@ -41,12 +41,15 @@ public class MyJPanel extends javax.swing.JPanel implements ActionListener {
         this.cellController = cellController;
     }
     // the size of cell's side in pixels
-    private int sizeCell = 8;
+    private int sizeCell = 16;
     // to decrease the computations of positions of cells on the panel
     private int[] scales;
     private Timer timer;
+    // how many generations are changed during 1 second
     private int fps = 10;
+    // total number of alived cell in the current generation
     private int num_alived = 0;
+    // to set a % of alive cells in the initial random configuratuin
     private int percent_alived = 25;
     private CellSet.Mode cellSet_mode = CellSet.Mode.INVERT_CELL;
     private boolean isPaused = true;

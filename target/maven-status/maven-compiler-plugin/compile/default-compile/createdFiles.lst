@@ -1,3 +1,4 @@
+com\artyom\app\game_life\view\MyJFrame$19.class
 com\artyom\app\game_life\view\MyJFrame$9.class
 com\artyom\app\game_life\view\MyJPanel$1.class
 com\artyom\app\game_life\controller\CellController.class
@@ -15,10 +16,12 @@ com\artyom\app\game_life\view\MyJFrame$16.class
 com\artyom\app\game_life\view\MyJFrame$13.class
 com\artyom\app\game_life\view\MyJFrame$3.class
 com\artyom\app\game_life\cells\CellSetFactory.class
+com\artyom\app\game_life\view\MyJFrame$18.class
 com\artyom\app\game_life\view\MyJFrame$8.class
 com\artyom\app\game_life\cells\CellSet.class
 com\artyom\app\game_life\view\MyJFrame$10.class
 com\artyom\app\game_life\view\MyJFrame$7.class
+com\artyom\app\game_life\view\MyJFrame$17.class
 com\artyom\app\game_life\view\MyJFrame$5.class
 com\artyom\app\game_life\view\MyJFrame$15.class
 com\artyom\app\game_life\view\MyJFrame$12.class

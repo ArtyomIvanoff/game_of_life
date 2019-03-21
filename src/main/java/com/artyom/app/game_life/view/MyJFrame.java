@@ -7,7 +7,10 @@ package com.artyom.app.game_life.view;
 
 import com.artyom.app.game_life.cells.CellSet;
 import java.awt.Color;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButtonMenuItem;
 /**
  *
  * @author 122
@@ -50,6 +53,11 @@ public class MyJFrame extends javax.swing.JFrame {
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jRadioButtonSizeCell16 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonSizeCell8 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonSizeCell4 = new javax.swing.JRadioButtonMenuItem();
+        jRadioButtonSizwCell2 = new javax.swing.JRadioButtonMenuItem();
         HelpMenu = new javax.swing.JMenu();
         AboutMenuItem = new javax.swing.JMenuItem();
 
@@ -111,7 +119,7 @@ public class MyJFrame extends javax.swing.JFrame {
         AddCellMenuItem.setText("Cell");
         AddCellMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddCellMenuItemActionPerformed(evt);
+                setCellMode(evt);
             }
         });
         AddMenu.add(AddCellMenuItem);
@@ -119,7 +127,7 @@ public class MyJFrame extends javax.swing.JFrame {
         AddGliderMenuItem.setText("Glider");
         AddGliderMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddGliderMenuItemActionPerformed(evt);
+                setCellMode(evt);
             }
         });
         AddMenu.add(AddGliderMenuItem);
@@ -127,7 +135,7 @@ public class MyJFrame extends javax.swing.JFrame {
         AddNineMenuItem.setText("Nine");
         AddNineMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddNineMenuItemActionPerformed(evt);
+                setCellMode(evt);
             }
         });
         AddMenu.add(AddNineMenuItem);
@@ -135,7 +143,7 @@ public class MyJFrame extends javax.swing.JFrame {
         AddEightMenuItem.setText("Eight");
         AddEightMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddEightMenuItemActionPerformed(evt);
+                setCellMode(evt);
             }
         });
         AddMenu.add(AddEightMenuItem);
@@ -143,7 +151,7 @@ public class MyJFrame extends javax.swing.JFrame {
         AddCornMenuItem.setText("Corn");
         AddCornMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddCornMenuItemActionPerformed(evt);
+                setCellMode(evt);
             }
         });
         AddMenu.add(AddCornMenuItem);
@@ -158,12 +166,7 @@ public class MyJFrame extends javax.swing.JFrame {
         });
         EditMenu.add(jMenuItem3);
 
-        jMenuColorCell.setText("Set cell's color");
-        jMenuColorCell.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuColorCellActionPerformed(evt);
-            }
-        });
+        jMenuColorCell.setText("Cell's color");
 
         jRadioButtonMenuItem1.setForeground(new java.awt.Color(255, 51, 51));
         jRadioButtonMenuItem1.setSelected(true);
@@ -180,7 +183,7 @@ public class MyJFrame extends javax.swing.JFrame {
         jRadioButtonMenuItem2.setText("Blue");
         jRadioButtonMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuItem2ActionPerformed(evt);
+                jRadioButtonMenuItem1ActionPerformed(evt);
             }
         });
         jMenuColorCell.add(jRadioButtonMenuItem2);
@@ -190,12 +193,52 @@ public class MyJFrame extends javax.swing.JFrame {
         jRadioButtonMenuItem3.setText("Green");
         jRadioButtonMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuItem3ActionPerformed(evt);
+                jRadioButtonMenuItem1ActionPerformed(evt);
             }
         });
         jMenuColorCell.add(jRadioButtonMenuItem3);
 
         EditMenu.add(jMenuColorCell);
+
+        jMenu1.setText("Size of cell (in pixels)");
+
+        jRadioButtonSizeCell16.setSelected(true);
+        jRadioButtonSizeCell16.setText("16");
+        jRadioButtonSizeCell16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonSizeCell16ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jRadioButtonSizeCell16);
+
+        jRadioButtonSizeCell8.setSelected(true);
+        jRadioButtonSizeCell8.setText("8");
+        jRadioButtonSizeCell8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonSizeCell16ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jRadioButtonSizeCell8);
+
+        jRadioButtonSizeCell4.setSelected(true);
+        jRadioButtonSizeCell4.setText("4");
+        jRadioButtonSizeCell4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonSizeCell16ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jRadioButtonSizeCell4);
+
+        jRadioButtonSizwCell2.setSelected(true);
+        jRadioButtonSizwCell2.setText("2");
+        jRadioButtonSizwCell2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonSizeCell16ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jRadioButtonSizwCell2);
+
+        EditMenu.add(jMenu1);
 
         jMenuBar1.add(EditMenu);
 
@@ -254,17 +297,32 @@ public class MyJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel1MouseClicked
 
-    private void AddCellMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCellMenuItemActionPerformed
+    private void setCellMode(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setCellMode
         // TODO add your handling code here:
         MyJPanel myJPanel = (MyJPanel)jPanel1;
-        myJPanel.setCellSet_mode(CellSet.Mode.INVERT_CELL);
-    }//GEN-LAST:event_AddCellMenuItemActionPerformed
-
-    private void AddGliderMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddGliderMenuItemActionPerformed
-        // TODO add your handling code here:
-        MyJPanel myJPanel = (MyJPanel)jPanel1;
-        myJPanel.setCellSet_mode(CellSet.Mode.ADD_GLIDER);
-    }//GEN-LAST:event_AddGliderMenuItemActionPerformed
+        JMenuItem menuMode = (JMenuItem) evt.getSource();
+        
+        CellSet.Mode mode = CellSet.Mode.INVERT_CELL;
+        
+        switch(menuMode.getText()) {
+            case "Cell" :
+                mode = CellSet.Mode.INVERT_CELL;
+                break;
+            case "Glider" :
+                mode = CellSet.Mode.ADD_GLIDER;
+                break;
+            case "Eight" :
+                mode = CellSet.Mode.ADD_EIGHT;
+                break;
+            case "Nine" :
+                mode = CellSet.Mode.ADD_NINE;
+                break;
+            case "Corn" :
+                mode = CellSet.Mode.ADD_CORN;
+        }
+        
+        myJPanel.setCellSet_mode(mode);
+    }//GEN-LAST:event_setCellMode
 
     private void AboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutMenuItemActionPerformed
         // TODO add your handling code here:
@@ -279,46 +337,43 @@ public class MyJFrame extends javax.swing.JFrame {
         myJPanel.configureCellSet();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jMenuColorCellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuColorCellActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jMenuColorCellActionPerformed
-
-    private void jRadioButtonMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        MyJPanel myJPanel = (MyJPanel)jPanel1;
-        myJPanel.setCellColor(Color.green);
-    }//GEN-LAST:event_jRadioButtonMenuItem3ActionPerformed
-
-    private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        MyJPanel myJPanel = (MyJPanel)jPanel1;
-        myJPanel.setCellColor(Color.blue);
-    }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
-
     private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
         // TODO add your handling code here:
         MyJPanel myJPanel = (MyJPanel)jPanel1;
-        myJPanel.setCellColor(Color.red);
+        Color cellColor = Color.red;
+        
+        JRadioButtonMenuItem colorMenuItem = (JRadioButtonMenuItem) evt.getSource();
+        
+        switch(colorMenuItem.getText()) {
+            case "Red" :
+                cellColor = Color.red;
+                break;
+            case "Blue" :
+                cellColor = Color.blue;
+                break;
+            case "Green" :
+                cellColor = Color.green;
+        }
+        
+        myJPanel.setCellColor(cellColor);
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
 
-    private void AddNineMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNineMenuItemActionPerformed
+    private void jRadioButtonSizeCell16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSizeCell16ActionPerformed
         // TODO add your handling code here:
         MyJPanel myJPanel = (MyJPanel)jPanel1;
-        myJPanel.setCellSet_mode(CellSet.Mode.ADD_NINE);
-    }//GEN-LAST:event_AddNineMenuItemActionPerformed
-
-    private void AddEightMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEightMenuItemActionPerformed
-        // TODO add your handling code here:
-        MyJPanel myJPanel = (MyJPanel)jPanel1;
-        myJPanel.setCellSet_mode(CellSet.Mode.ADD_EIGHT);
-    }//GEN-LAST:event_AddEightMenuItemActionPerformed
-
-    private void AddCornMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCornMenuItemActionPerformed
-        // TODO add your handling code here:
-        MyJPanel myJPanel = (MyJPanel)jPanel1;
-        myJPanel.setCellSet_mode(CellSet.Mode.ADD_CORN);
-    }//GEN-LAST:event_AddCornMenuItemActionPerformed
+        // pause the game
+         myJPanel.setPause(true);
+        JRadioButtonMenuItem sizeCell = (JRadioButtonMenuItem)evt.getSource();
+        int size = 1;
+        try {
+           size = Integer.parseInt(sizeCell.getText());
+        } catch(NumberFormatException nfe) {
+            System.err.println(nfe);
+        }
+        myJPanel.setSizeCell(size);
+        // set new settings for the new game
+        myJPanel.configureCellSet();
+    }//GEN-LAST:event_jRadioButtonSizeCell16ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,6 +425,7 @@ public class MyJFrame extends javax.swing.JFrame {
     private javax.swing.JMenu HelpMenu;
     private javax.swing.JMenuItem StartPauseMenuItem;
     private javax.swing.JColorChooser jColorChooser1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuColorCell;
     private javax.swing.JMenuItem jMenuItem3;
@@ -377,5 +433,9 @@ public class MyJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonSizeCell16;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonSizeCell4;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonSizeCell8;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonSizwCell2;
     // End of variables declaration//GEN-END:variables
 }
